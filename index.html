@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 자격증 로드맵</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>AI 자격증 로드맵</h1>
+  <p class="sub">AI 자격증·무료 교육을 비교하고 내 학습 진행률을 관리합니다. 모든 데이터는 이 브라우저에만 저장됩니다.</p>
+  <p class="warn">시험 코드·응시료·개편 일정은 자주 바뀝니다. 응시 전 반드시 각 항목의 <b>공식 링크</b>에서 확인하세요.</p>
+</header>
+
+<section class="summary" id="summary" aria-live="polite"></section>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="browse">비교하기</button>
+  <button role="tab" aria-selected="false" data-tab="plan">내 로드맵</button>
+  <button role="tab" aria-selected="false" data-tab="add">항목 추가</button>
+</nav>
+
+<main>
+  <section id="tab-browse">
+    <div class="filters">
+      <input id="q" type="search" placeholder="이름·기관·주제 검색" aria-label="검색">
+      <select id="kind" aria-label="종류"><option value="">전체 종류</option><option value="cert">자격증</option><option value="course">교육</option></select>
+      <select id="level" aria-label="난이도"><option value="">전체 난이도</option><option value="1">입문</option><option value="2">중급</option><option value="3">고급</option></select>
+      <select id="provider" aria-label="기관"><option value="">전체 기관</option></select>
+      <label class="chk"><input id="freeOnly" type="checkbox"> 무료 교육만</label>
+    </div>
+    <p id="count" class="muted"></p>
+    <div id="cards" class="cards"></div>
+  </section>
+
+  <section id="tab-plan" hidden>
+    <div id="plan"></div>
+  </section>
+
+  <section id="tab-add" hidden>
+    <form id="addForm" class="form">
+      <label>이름 <input name="name" required></label>
+      <label>기관 <input name="provider"></label>
+      <label>종류 <select name="kind"><option value="cert">자격증</option><option value="course">교육</option></select></label>
+      <label>난이도 <select name="level"><option value="1">입문</option><option value="2">중급</option><option value="3">고급</option></select></label>
+      <label>주제 (쉼표로 구분) <input name="topics" placeholder="예: LLM, 데이터 분석"></label>
+      <label>공식 링크 <input name="url" type="url" placeholder="https://"></label>
+      <label class="chk"><input name="free" type="checkbox"> 무료 교육</label>
+      <button type="submit" class="primary">추가</button>
+      <p id="addMsg" class="muted" role="status"></p>
+    </form>
+    <div class="backup">
+      <h2>백업</h2>
+      <button id="exportBtn">JSON 내보내기</button>
+      <label class="btn">JSON 가져오기<input id="importFile" type="file" accept=".json,application/json" hidden></label>
+      <p id="backupMsg" class="muted" role="status"></p>
+    </div>
+  </section>
+</main>
+<script src="data.js"></script>
+<script src="roadmap.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
